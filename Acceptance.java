@@ -10,7 +10,7 @@ public class Acceptance {
 		int solid = 0;
 		int acceptable = 0;
 		int nope = 0;
-		boolean admitted;
+		boolean admitted = true;
 		String reason = "";
 			
 		System.out.print( "Enter your SAT score: " );
@@ -47,7 +47,8 @@ public class Acceptance {
 		}
 
 		System.out.print( "Enter what state you're from: " );
-		String state = input.nextLine();
+		String state = input.next();
+
 
 		if( "Colorado".equals( state ) ) elite += 1;
 		else if( "Florida".equals( state ) ) {
@@ -55,16 +56,23 @@ public class Acceptance {
 			reason += "You live in Florida. Enough said\n";
 		}
 		else acceptable += 1;
+		
 
-		if( elite < 1 ) {
-			admitted = false;
-			System.out.println( "You're not elite enough." );
+		System.out.print( "What is your last name: " );
+		String lastname = input.next();
+
+		input.close();
+
+		if( ( elite >= 1 || solid >= 2 || "Padjen".equals( lastname ) ) && nope == 0 ) {
+			System.out.println( "Accepted" );
 		}
-		else if( solid < 2 ) {
-			admitted = false;
-			System.out.println( "Not solid enough" );
+		else if( nope > 0 ) {
+			System.out.println( "Not accepted: too many nopes" );
+			System.out.println( "\tReasons: " + reason );
 		}
-		else if(  )
+		else {
+			System.out.println( "Not accepted" );
+		}
 
 	}
 
